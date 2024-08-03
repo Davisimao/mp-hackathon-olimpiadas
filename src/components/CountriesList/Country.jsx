@@ -43,13 +43,32 @@ const CountryList = () => {
     <Header />
     {countries.map((country) => (
      <div key={country.id} className={styles.containerCountry}>
+
       <div className={styles.containerFlag}>
-       <img src={country.flag_url} alt={`${country.name}`} height={40} width={40} className={styles.flag} />
+       <img src={country.flag_url} alt={`${country.name}`} height={40} width={55} />
        <p>{country.name}</p>
       </div>
+
+
+
+      <div className={styles.goldMedal}>
+       <p>{country.gold_medals}</p>
+      </div>
+
+      <div className={styles.silverMedal}>
+       <p>{country.silver_medals}</p>
+      </div>
+
+      <div className={styles.bronzeMedal}>
+       <p>{country.bronze_medals}</p>
+      </div>
+
+
+
       <div className={styles.containerTotalMedals}>
        <p>{country.total_medals} medalhas</p>
       </div>
+
      </div>
     ))}
    </div>

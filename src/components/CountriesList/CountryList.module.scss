@@ -21,51 +21,60 @@
   justify-content: center;
 }
 
-.goldSection {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-}
-
 .containerCountry {
+  position: relative;
   display: flex;
   flex-direction: row;
   margin: 1rem;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start; 
   border: 1px solid black;
   width: 60rem;
   height: 4.3rem;
   background-color: #a39c9c;
   cursor: pointer;
 
-  &:hover{
+  &:hover {
     background-color: #555353;
-transition: .8s;
+    transition: .8s;
   }
 }
 
 .containerFlag {
+  position: absolute; 
+  left: 1rem;
   display: flex;
   align-items: center;
-  justify-content: center;
   padding: .6rem;
- 
 
   p {
-    padding: 1rem;
-    font-size: 18px;
+    padding: .5rem;
+    font-size: 15px;
     font-weight: 400;
   }
 }
 
-.containerMedal {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-}
+
+
+  .goldMedal {
+    position: absolute;
+    left: 17.4rem;
+  }
+  .silverMedal {
+    position: absolute;
+    left: 29.5rem;
+  }
+  .bronzeMedal {
+    position: absolute;
+    left: 41.5rem;
+  }
+
 
 .containerTotalMedals {
-  padding: 2rem 2.5rem;
+  position: absolute;
+  right: 1rem; 
+  display: flex;
+  align-items: center;
+  padding: 2rem 1.5rem;
+ 
 }
