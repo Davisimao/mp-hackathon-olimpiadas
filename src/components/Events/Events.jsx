@@ -1,7 +1,22 @@
+import useFetchEvents from "../../API/Events"
+
 export default function Events() {
 
- return (
+ const { events, /* loading, error */ } = useFetchEvents()
 
-  <h1>teste</h1>
+
+ return (
+  <div>
+   {events.map((event) => {
+
+    <div key={event.id}>
+     <p>{event.discipline_name}</p>
+    </div>
+
+   })
+
+
+   }
+  </div>
  )
 }
