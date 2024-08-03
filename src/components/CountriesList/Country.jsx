@@ -1,83 +1,60 @@
-import axios from "axios"
-import { useEffect, useState } from "react"
-import goldMedal from '../../assets/goldMedal.png'
-import silverMedal from '../../assets/silverMedal.png'
-import bronzeMedal from '../../assets/bronzeMedal.png'
-import gifUrl from '../../assets/LoadSpinner.gif'
-import OlimpcsLogo from '../../assets/Olympics.svg'
-const urlCountryList = 'https://apis.codante.io/olympic-games/countries'
+import axios from "axios";
+import { useEffect, useState } from "react";
+import gifUrl from '../../assets/LoadSpinner.gif';
+import styles from './CountryList.module.scss';
+
+import Header from "./header/Header";
+const urlCountryList = 'https://apis.codante.io/olympic-games/countries';
 
 const CountryList = () => {
  const [countries, setCountries] = useState([]);
- const [loading, setLoading] = useState(true)
+ const [loading, setLoading] = useState(true);
  const [error, setError] = useState(null);
 
  useEffect(() => {
-  const fechCountries = async () => {
+  const fetchCountries = async () => {
    try {
-    const response = await axios.get(urlCountryList)
-    setCountries(response.data.data)
-    setLoading(false)
+    const response = await axios.get(urlCountryList);
+    setCountries(response.data.data);
+    setLoading(false);
    } catch (error) {
-    setError(error)
-    setLoading(false)
+    setError(error);
+    setLoading(false);
    }
-  }
-  fechCountries()
- }, [])
+  };
+  fetchCountries();
+ }, []);
+
  if (loading) {
   return (
-   <div className="container-LoadSpinner">
+   <div className={styles.containerLoadSpinner}>
     <img src={gifUrl} width={500} height={500} />
    </div>
-  )
+  );
  }
+
  if (error) {
-  return <p>Erro: {error.message}</p>
+  return <p>Erro: {error.message}</p>;
  }
+
  return (
   <>
-   <div className="container-main">
-
-    <div className="title">
-     <img src={OlimpcsLogo} height={250} />
-     <h1>Lista de Medalhas</h1>
-    </div>
+   <div className={styles.containerMain}>
+    <Header />
     {countries.map((country) => (
-     <div key={country.id} className="container-country" >
-      <div className="container-flag">
-       <img src={country.flag_url} alt={`${country.name}`} width={120} className="flag" />
+     <div key={country.id} className={styles.containerCountry}>
+      <div className={styles.containerFlag}>
+       <img src={country.flag_url} alt={`${country.name}`} width={120} className={styles.flag} />
        <p>{country.name}</p>
       </div>
-
-      <div className="container-medal">
-
-       <div className="gold-section">
-        <p>{country.gold_medals}</p>
-        <img src={goldMedal} height={30} />
-       </div>
-
-       <div className="gold-section">
-        <p>{country.silver_medals}</p>
-        <img src={silverMedal} height={30} />
-       </div>
-
-       <div className="gold-section">
-        <p>{country.bronze_medals}</p>
-        <img src={bronzeMedal} height={30} />
-       </div>
-
-      </div>
-
-      <div className="cointainer-total_medals">
+      <div className={styles.containerTotalMedals}>
        <p>{country.total_medals} medalhas</p>
       </div>
      </div>
     ))}
-
    </div>
   </>
- )
-}
+ );
+};
 
-export default CountryList
+export default CountryList;
