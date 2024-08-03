@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useFetchCountries from "../../API/Countries";
 import gifUrl from '../../assets/LoadSpinner.gif';
 import styles from './CountryList.module.scss';
@@ -5,6 +6,15 @@ import Header from "./header/Header";
 
 const CountryList = () => {
  const { countries, loading, error } = useFetchCountries();
+ const [searchTerm, setSearchTerm] = useState('');
+
+ const handleSearchChange = (e) => {
+  setSearchTerm(e.target.value);
+ };
+
+ const filteredCountries = countries.filter(country =>
+  country.name.toLowerCase().includes(searchTerm.toLowerCase())
+ );
 
  if (loading) {
   return (
@@ -20,8 +30,8 @@ const CountryList = () => {
 
  return (
   <div className={styles.containerMain}>
-   <Header />
-   {countries.map((country, index) => (
+   <Header searchTerm={searchTerm} onSearchChange={handleSearchChange} />
+   {filteredCountries.map((country, index) => (
     <div key={country.id} className={styles.containerCountry}>
      <p className={styles.rank}>{index + 1}</p>
      <div className={styles.containerFlag}>
