@@ -6,7 +6,7 @@ export default function SearchBar({ searchTerm, onSearchChange }) {
  return (
   <input
    type="text"
-   placeholder="Search for a country"
+   placeholder="Procure por um país"
    value={searchTerm}
    onChange={onSearchChange}
    className={styles.searchBox}
