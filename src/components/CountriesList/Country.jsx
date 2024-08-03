@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import gifUrl from '../../assets/LoadSpinner.gif';
 import styles from './CountryList.module.scss';
-
 import Header from "./header/Header";
 const urlCountryList = 'https://apis.codante.io/olympic-games/countries';
+
 
 const CountryList = () => {
  const [countries, setCountries] = useState([]);
@@ -41,10 +41,11 @@ const CountryList = () => {
   <>
    <div className={styles.containerMain}>
     <Header />
-    {countries.map((country) => (
+    {countries.map((country, index) => (
      <div key={country.id} className={styles.containerCountry}>
-
+      <p className={styles.rank}>{index + 1}</p>
       <div className={styles.containerFlag}>
+
        <img src={country.flag_url} alt={`${country.name}`} height={40} width={55} />
        <p>{country.name}</p>
       </div>
