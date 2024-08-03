@@ -35,13 +35,22 @@
   justify-content: space-between;
   border: 1px solid black;
   width: 60rem;
+  height: 4.3rem;
   background-color: #a39c9c;
   cursor: pointer;
+
+  &:hover{
+    background-color: #555353;
+transition: .8s;
+  }
 }
 
 .containerFlag {
   display: flex;
-  padding: 1rem;
+  align-items: center;
+  justify-content: center;
+  padding: .6rem;
+ 
 
   p {
     padding: 1rem;

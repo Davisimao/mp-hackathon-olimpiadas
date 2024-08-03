@@ -44,7 +44,7 @@ const CountryList = () => {
     {countries.map((country) => (
      <div key={country.id} className={styles.containerCountry}>
       <div className={styles.containerFlag}>
-       <img src={country.flag_url} alt={`${country.name}`} width={120} className={styles.flag} />
+       <img src={country.flag_url} alt={`${country.name}`} height={40} width={40} className={styles.flag} />
        <p>{country.name}</p>
       </div>
       <div className={styles.containerTotalMedals}>
